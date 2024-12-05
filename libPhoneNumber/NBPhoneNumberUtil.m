@@ -436,9 +436,9 @@ static NSArray *GEO_MOBILE_COUNTRIES;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     NSString *EXTN_PATTERNS_FOR_PARSING =
-        @"(?:;ext=([0-9０-９٠-٩۰-۹#]{1,7})|[  "
+        @"(?:;ext=([0-9０-９٠-٩۰-۹]{1,7})|[  "
         @"\\t,]*(?:e?xt(?:ensi(?:ó?|ó))?n?|ｅ?ｘｔｎ?|[,xｘX#＃~～]|int|anexo|ｉｎｔ)[:\\.．]?["
-        @"  \\t,-]*([0-9０-９٠-٩۰-۹#]{1,7})#?|[- ]+([0-9０-９٠-٩۰-۹#]{1,5})#)$";
+        @"  \\t,-]*([0-9０-９٠-٩۰-۹]{1,7})#?|[- ]+([0-9０-９٠-٩۰-۹]{1,5})#)$";
 
     LEADING_PLUS_CHARS_PATTERN = [NSString stringWithFormat:@"^[%@]+", NB_PLUS_CHARS];
 
