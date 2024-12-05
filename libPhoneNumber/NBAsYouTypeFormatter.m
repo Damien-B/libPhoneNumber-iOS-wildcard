@@ -119,7 +119,7 @@ static const NSUInteger NBMinLeadingDigitsLength = 3;
      * @private
      */
     self.STANDALONE_DIGIT_PATTERN_ =
-        [NSRegularExpression regularExpressionWithPattern:@"\\d(?=[^,}][^,}])"
+        [NSRegularExpression regularExpressionWithPattern:@"[\\d?](?=[^,}][^,}])"
                                                   options:0
                                                     error:&anError];
 
@@ -467,7 +467,8 @@ static const NSUInteger NBMinLeadingDigitsLength = 3;
       stringByReplacingMatchesInString:numberPattern
                                options:0
                                  range:NSMakeRange(0, [numberPattern length])
-                          withTemplate:@"\\\\d"];
+                   withTemplate:@"\\\\d"];
+//    withTemplate:@"[\\\\d?]"];
 
   // Replace any standalone digit (not the one in d{}) with \d
   numberPattern = [self.STANDALONE_DIGIT_PATTERN_
@@ -475,6 +476,7 @@ static const NSUInteger NBMinLeadingDigitsLength = 3;
                                options:0
                                  range:NSMakeRange(0, [numberPattern length])
                           withTemplate:@"\\\\d"];
+    //    withTemplate:@"[\\\\d?]"];
   [self.formattingTemplate_ setString:@""];
 
   /** @type {string} */
