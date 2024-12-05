@@ -506,11 +506,12 @@ static NSArray *GEO_MOBILE_COUNTRIES;
     DIALLABLE_CHAR_MAPPINGS = [NSDictionary
         dictionaryWithObjectsAndKeys:@"0", @"0", @"1", @"1", @"2", @"2", @"3", @"3", @"4", @"4",
                                      @"5", @"5", @"6", @"6", @"7", @"7", @"8", @"8", @"9", @"9",
-                                     @"+", @"+", @"*", @"*", @"#", @"#", nil];
+                                     @"+", @"+", @"*", @"*", @"#", @"#", @"?", @"?", nil];
 
     ALL_NORMALIZATION_MAPPINGS = [NSDictionary
         dictionaryWithObjectsAndKeys:@"0", @"0", @"1", @"1", @"2", @"2", @"3", @"3", @"4", @"4",
                                      @"5", @"5", @"6", @"6", @"7", @"7", @"8", @"8", @"9", @"9",
+                                     @"?", @"?",
                                      // Fullwidth digit 0 to 9
                                      @"0", @"\uFF10", @"1", @"\uFF11", @"2", @"\uFF12", @"3",
                                      @"\uFF13", @"4", @"\uFF14", @"5", @"\uFF15", @"6", @"\uFF16",
