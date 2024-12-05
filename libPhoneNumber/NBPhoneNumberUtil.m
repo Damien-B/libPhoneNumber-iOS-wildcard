@@ -436,9 +436,9 @@ static NSArray *GEO_MOBILE_COUNTRIES;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     NSString *EXTN_PATTERNS_FOR_PARSING =
-        @"(?:;ext=([0-9０-９٠-٩۰-۹]{1,7})|[  "
+        @"(?:;ext=([0-9０-９٠-٩۰-۹#]{1,7})|[  "
         @"\\t,]*(?:e?xt(?:ensi(?:ó?|ó))?n?|ｅ?ｘｔｎ?|[,xｘX#＃~～]|int|anexo|ｉｎｔ)[:\\.．]?["
-        @"  \\t,-]*([0-9０-９٠-٩۰-۹]{1,7})#?|[- ]+([0-9０-９٠-٩۰-۹]{1,5})#)$";
+        @"  \\t,-]*([0-9０-９٠-٩۰-۹#]{1,7})#?|[- ]+([0-9０-９٠-٩۰-۹#]{1,5})#)$";
 
     LEADING_PLUS_CHARS_PATTERN = [NSString stringWithFormat:@"^[%@]+", NB_PLUS_CHARS];
 
@@ -455,14 +455,14 @@ static NSArray *GEO_MOBILE_COUNTRIES;
     SEPARATOR_PATTERN = [NSString stringWithFormat:@"[%@]+", VALID_PUNCTUATION];
 
     VALID_PHONE_NUMBER_PATTERN =
-        @"^[0-9０-９٠-٩۰-۹]{2}$|^[+＋]*(?:[-x‐-―−ー－-／  "
+        @"^[0-9０-９٠-٩۰-۹#]{2}$|^[+＋]*(?:[-x‐-―−ー－-／  "
         @"­​⁠　()（）［］.\\[\\]/"
-        @"~⁓∼～*]*[0-9０-９٠-٩۰-۹]){3,}[-x‐-―−ー－-／ "
+        @"~⁓∼～*]*[0-9０-９٠-٩۰-۹#]){3,}[-x‐-―−ー－-／ "
         @" "
         @"­​⁠　()（）［］.\\[\\]/"
-        @"~⁓∼～*A-Za-z0-9０-９٠-٩۰-۹]*(?:;ext=([0-9０-９٠-٩۰-۹]{1,7})|[  "
+        @"~⁓∼～*A-Za-z0-9０-９٠-٩۰-۹#]*(?:;ext=([0-9０-９٠-٩۰-۹#]{1,7})|[  "
         @"\\t,]*(?:e?xt(?:ensi(?:ó?|ó))?n?|ｅ?ｘｔｎ?|[,xｘ#＃~～]|int|anexo|ｉｎｔ)[:\\.．]?[ "
-        @" \\t,-]*([0-9０-９٠-٩۰-۹]{1,7})#?|[- ]+([0-9０-９٠-٩۰-۹]{1,5})#)?$";
+        @" \\t,-]*([0-9０-９٠-٩۰-۹#]{1,7})#?|[- ]+([0-9０-９٠-٩۰-۹#]{1,5})#)?$";
   });
 }
 
@@ -472,7 +472,8 @@ static NSArray *GEO_MOBILE_COUNTRIES;
     DIGIT_MAPPINGS = [NSDictionary
         dictionaryWithObjectsAndKeys:@"0", @"0", @"1", @"1", @"2", @"2", @"3", @"3", @"4", @"4",
                                      @"5", @"5", @"6", @"6", @"7", @"7", @"8", @"8", @"9", @"9",
-                                     // Fullwidth digit 0 to 9
+                                     @"#", @"#",
+                                     // Fullwidth digit 0 to 9 and #
                                      @"0", @"\uFF10", @"1", @"\uFF11", @"2", @"\uFF12", @"3",
                                      @"\uFF13", @"4", @"\uFF14", @"5", @"\uFF15", @"6", @"\uFF16",
                                      @"7", @"\uFF17", @"8", @"\uFF18", @"9", @"\uFF19",
@@ -508,6 +509,7 @@ static NSArray *GEO_MOBILE_COUNTRIES;
     ALL_NORMALIZATION_MAPPINGS = [NSDictionary
         dictionaryWithObjectsAndKeys:@"0", @"0", @"1", @"1", @"2", @"2", @"3", @"3", @"4", @"4",
                                      @"5", @"5", @"6", @"6", @"7", @"7", @"8", @"8", @"9", @"9",
+                                     @"#", @"#",
                                      // Fullwidth digit 0 to 9
                                      @"0", @"\uFF10", @"1", @"\uFF11", @"2", @"\uFF12", @"3",
                                      @"\uFF13", @"4", @"\uFF14", @"5", @"\uFF15", @"6", @"\uFF16",
@@ -530,6 +532,7 @@ static NSArray *GEO_MOBILE_COUNTRIES;
     ALL_PLUS_NUMBER_GROUPING_SYMBOLS = [NSDictionary
         dictionaryWithObjectsAndKeys:@"0", @"0", @"1", @"1", @"2", @"2", @"3", @"3", @"4", @"4",
                                      @"5", @"5", @"6", @"6", @"7", @"7", @"8", @"8", @"9", @"9",
+                                     @"#", @"#",
                                      @"A", @"A", @"B", @"B", @"C", @"C", @"D", @"D", @"E", @"E",
                                      @"F", @"F", @"G", @"G", @"H", @"H", @"I", @"I", @"J", @"J",
                                      @"K", @"K", @"L", @"L", @"M", @"M", @"N", @"N", @"O", @"O",
